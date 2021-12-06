@@ -30,21 +30,18 @@ class HomeViewModel : ViewModel() {
 
         var displayDataBuilder = ""
         battery?.let {
-            displayDataBuilder = displayDataBuilder.plus("Battery: ${it.batteryLevel}%\n")
-            displayDataBuilder = displayDataBuilder.plus("Charging: ${it.pluggedIn}\n\n")
+            displayDataBuilder += "Battery: ${it.batteryLevel}%\n"
+            displayDataBuilder +="Charging: ${it.pluggedIn}\n\n"
         }
 
         location?.let {
-            displayDataBuilder = displayDataBuilder.plus("Lat: ${it.latitude}\n")
-            displayDataBuilder = displayDataBuilder.plus("Long: ${it.longitude}\n\n")
+            displayDataBuilder +="Lat: ${it.latitude}\n"
+            displayDataBuilder +="Long: ${it.longitude}\n\n"
         }
 
         apps?.let { set ->
-            displayDataBuilder = displayDataBuilder.plus("Apps: \n")
-
-            set.forEach {
-                displayDataBuilder = displayDataBuilder.plus("$it\n")
-            }
+            displayDataBuilder += "Apps: \n"
+            displayDataBuilder += set.joinToString { "$it\n" }
         }
 
         displayData.value = displayDataBuilder

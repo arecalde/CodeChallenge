@@ -12,7 +12,7 @@ private const val APPS_LIST_KEY = "apps"
 private const val BATTERY_STATE_KEY = "battery"
 object SharedPreferencesWrapper {
     lateinit var requireActivity: () -> Activity
-    val prefs: SharedPreferences
+    private val prefs: SharedPreferences
         get() = requireActivity().getSharedPreferences(
             "com.example.codechallenge", AppCompatActivity.MODE_PRIVATE)
 

@@ -13,14 +13,10 @@ import androidx.fragment.app.viewModels
 import com.example.codechallenge.helpers.BatteryInfo
 import com.example.codechallenge.helpers.LocationHelper
 import com.example.codechallenge.helpers.SharedPreferencesWrapper
-import com.google.gson.Gson
-
-
 
 class HomeFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModels()
-    val gson = Gson()
     private var checkBatteryInfo = false
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,19 +47,6 @@ class HomeFragment : Fragment() {
         }
 
         return binding.root
-    }
-
-    // If everything is alright then
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String?>,
-        grantResults: IntArray
-    ) {
-        if (requestCode == LocationHelper.PERMISSION_ID) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                LocationHelper.getLastLocation()
-            }
-        }
     }
 
     private val batteryBroadcastReceiver: BroadcastReceiver = object: BroadcastReceiver() {
