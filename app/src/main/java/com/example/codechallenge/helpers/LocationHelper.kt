@@ -1,4 +1,4 @@
-package com.example.codechallenge
+package com.example.codechallenge.helpers
 
 import android.Manifest
 import android.content.Context
@@ -36,7 +36,9 @@ object LocationHelper {
                 // location from
                 // FusedLocationClient
                 // object
-                val fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
+                val fusedLocationClient = LocationServices.getFusedLocationProviderClient(
+                    requireContext()
+                )
 
                 fusedLocationClient.getLastLocation()
                     .addOnCompleteListener { task ->

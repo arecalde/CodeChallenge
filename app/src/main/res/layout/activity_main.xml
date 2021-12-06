@@ -6,59 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-    <Button
-        android:layout_margin="20dp"
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/button2"
-        android:text="Save Data" />
-
-    <Button
-        android:layout_margin="20dp"
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/button1"
-        android:text="Get Data" />
-
-    <Button
-        android:layout_margin="20dp"
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/button1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/button4"
-        android:text="Is Emulator" />
-
-    <Button
-        android:layout_margin="20dp"
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button1"
-        app:layout_constraintStart_toEndOf="@id/button3"
-        android:text="Last reset" />
-
-    <TextView
-        android:id="@+id/result"
-        android:layout_width="0dp"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:gravity="center_vertical|center_horizontal"
-        android:padding="10dp"
-        android:text="Result"
-        app:layout_constraintTop_toBottomOf="@id/button3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:navGraph="@navigation/nav"
+        app:defaultNavHost="true" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
