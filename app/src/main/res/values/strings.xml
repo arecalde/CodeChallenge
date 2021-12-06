@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CodeChallenge</string>
+    <string name="last_reset">Last reset</string>
+    <string name="is_emulator">Is Emulator</string>
+    <string name="get_data">Get Data</string>
+    <string name="save_data">Save Data</string>
 </resources>

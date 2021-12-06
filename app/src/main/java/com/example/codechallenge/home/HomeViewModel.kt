@@ -1,7 +1,7 @@
 package com.example.codechallenge.home
 
 
-import android.util.Log
+import android.os.Build
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.codechallenge.helpers.Event
@@ -17,6 +17,10 @@ class HomeViewModel : ViewModel() {
         LocationHelper.getLastLocation()
         getPackages.raiseEvent(Unit)
         getBatteryData.raiseEvent(Unit)
+    }
+
+    fun checkEmulator() {
+        displayData.value = isProbablyRunningOnEmulator().toString()
     }
 
     fun getData() {
@@ -44,5 +48,28 @@ class HomeViewModel : ViewModel() {
         }
 
         displayData.value = displayDataBuilder
+    }
+
+    private fun isProbablyRunningOnEmulator(): Boolean {
+        // Android SDK emulator
+        return ((Build.FINGERPRINT.startsWith("google/sdk_gphone_")
+                && Build.FINGERPRINT.endsWith(":user/release-keys")
+                && Build.MANUFACTURER == "Google" && Build.PRODUCT.startsWith("sdk_gphone_") && Build.BRAND == "google"
+                && Build.MODEL.startsWith("sdk_gphone_"))
+                //
+                || Build.FINGERPRINT.startsWith("generic")
+                || Build.FINGERPRINT.startsWith("unknown")
+                || Build.MODEL.contains("google_sdk")
+                || Build.MODEL.contains("Emulator")
+                || Build.MODEL.contains("Android SDK built for x86")
+                //bluestacks
+                || "QC_Reference_Phone" == Build.BOARD && !"Xiaomi".equals(
+            Build.MANUFACTURER,
+            ignoreCase = true
+        ) //bluestacks
+                || Build.MANUFACTURER.contains("Genymotion")
+                || Build.HOST == "Build2" //MSI App Player
+                || Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic")
+                || Build.PRODUCT == "google_sdk")
     }
 }

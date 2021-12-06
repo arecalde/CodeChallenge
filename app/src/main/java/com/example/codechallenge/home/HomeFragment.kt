@@ -3,14 +3,11 @@ package com.example.codechallenge.home
 import android.content.*
 import android.content.pm.PackageManager
 import android.os.BatteryManager
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import com.example.codechallenge.R
 import com.example.codechallenge.databinding.HomeFragmentBinding
 import androidx.fragment.app.viewModels
 import com.example.codechallenge.helpers.BatteryInfo
@@ -91,6 +88,5 @@ class HomeFragment : Fragment() {
         super.onDestroy()
         requireActivity().unregisterReceiver(batteryBroadcastReceiver)
     }
-
 
 }
